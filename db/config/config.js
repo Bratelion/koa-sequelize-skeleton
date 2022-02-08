@@ -1,36 +1,36 @@
-import dotenv from 'dotenv';
-import { readFileSync } from 'fs';
-import { parse } from 'pg-connection-string';
-
-dotenv.config();
+require('dotenv').config();
+const parse = require('pg-connection-string').parse;
+const readFileSync = require('fs').readFileSync;
 
 const { user, password, host, database } = parse(process.env.DATABASE_URL);
 
-export const development = {
-  username: user,
-  password,
-  host,
-  database,
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-      ca: readFileSync(`${__dirname}/../../global-bundle.pem`),
+module.exports = { 
+  development: {
+    username: user,
+    password,
+    host,
+    database,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+        ca: readFileSync(`${__dirname}/../../global-bundle.pem`),
+      },
     },
   },
-};
-export const production = {
-  username: user,
-  password,
-  host,
-  database,
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      ca: readFileSync(`global-bundle.pem`),
+  production: {
+    username: user,
+    password,
+    host,
+    database,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        ca: readFileSync(`global-bundle.pem`),
+      },
     },
-  },
-  ssl: true,
-};
+    ssl: true,
+  }
+}
