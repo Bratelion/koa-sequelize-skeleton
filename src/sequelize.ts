@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { User } from '../models/User';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -20,8 +21,9 @@ const dbConncetion = () => {
     models: [__dirname + '../models'],
     dialectOptions: {
       ssl: {
-        require: false,
+        require: true,
         rejectUnauthorized: false,
+        ca: fs.readFileSync(`${__dirname}/../global-bundle.pem`),
       },
     },
   });
