@@ -16,7 +16,10 @@
     "db:create": "yarn sequelize-cli db:create",
     "db:migrate": "yarn sequelize-cli db:migrate",
     "db:migration:generate": "yarn sequelize-cli migration:generate --name",
-    "db:seed": "yarn sequelize-cli db:seed:all"
+    "db:seed": "yarn sequelize-cli db:seed:all",
+    "db:migrate:rollback": "yarn sequelize-cli db:migrate:undo:all",
+    "db:seed:rollback": "yarn sequelize-cli db:seed:undo:all",
+    "db:rollback": "yarn db:seed:rollback && yarn db:migrate:rollback"
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
@@ -25,12 +28,13 @@
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.1.1",
-    "tsc": "^2.0.4",
-    "typescript": "^4.5.5",
+    "pg": "^8.7.3",
+    "pg-connection-string": "^2.5.0",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^6.2.0",
     "sequelize-typescript": "^2.1.0",
-    "pg-connection-string": "^2.5.0"
+    "tsc": "^2.0.4",
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",
