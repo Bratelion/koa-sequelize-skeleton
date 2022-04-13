@@ -1,7 +1,7 @@
 {
-  "name": "koa-backend-skeleton-with-sequelize",
+  "name": "mystic-omilia",
   "version": "1.0.0",
-  "description": "Simple typescript skeleton in KoaJs + Sequelize ORM with Postgres database",
+  "description": "Server for purposes of establishing end-to-end encrypted group communication",
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
