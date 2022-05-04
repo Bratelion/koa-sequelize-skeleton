@@ -19,8 +19,9 @@ const dbConncetion = () => {
     password,
     host,
     models: [__dirname + '../models'],
+    ssl: JSON.parse(process.env.DB_ENABLE_SSL),
     dialectOptions: {
-      ssl: {
+      ssl: JSON.parse(process.env.DB_ENABLE_SSL) && {
         require: true,
         rejectUnauthorized: false,
         ca: fs.readFileSync(`${__dirname}/../global-bundle.pem`),
